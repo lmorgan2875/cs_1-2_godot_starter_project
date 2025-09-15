@@ -15,18 +15,21 @@ var yDirection = 0
 # var projectile_scene = preload("res://scenes/projectile.tscn")
 
 func _physics_process(_delta):
+	
 	# TODO: Get horizontal input (left/right keys)
 	# Input.get_axis checks two keys and gives us a number:
 	# - When LEFT is pressed: returns -1.0
 	# - When RIGHT is pressed: returns 1.0  
 	# - When NOTHING is pressed: returns 0.0
 	xDirection = Input.get_axis("ui_left", "ui_right")
+
 	
 	# TODO: Get vertical input (up/down keys)  
 	# Same idea, but for up and down movement
 	yDirection = Input.get_axis("ui_up", "ui_down")
 	
-
+	
+	
 	# TODO: Calculate X movement by multiplying direction × speed
 	# This gives us the actual pixels to move this frame
 	# If direction is 1 and speed is 300, we get 300 pixels right
@@ -46,21 +49,36 @@ func _physics_process(_delta):
 	# Set facing to "right", "left", "down", or "up"
 	# Only update facing when actually moving (direction != 0)
 	
+	if xDirection >0:
+		facing = "right"
+	elif xDirection <0: 
+		facing = "left"
+	if yDirection >0:
+		facing = "down"
+	elif yDirection <0:
+		facing = "up"
+		
+	
 	
 	# TODO: Update animation based on facing direction
 	# Call your update_animation() function here
 	
+	
 	# TODO: Actually apply the movement
 	# This is a special Godot function that makes the movement happen
+	update_animation()
 	move_and_slide()
 
 # TODO: Create animation function (add this outside of _physics_process)
 func update_animation():
 	# TODO: Set the animation based on the facing direction
-	# Use: _animation_player.play("idle_" + facing)
+	if xDirection == 0 && yDirection == 0:
+		_animation_player.play("idle_" + facing)
+	elif xDirection !=0 || yDirection !=0:
+		_animation_player.play("walk_" + facing)
+	#print(_animation_player.animation)
 	# This combines "idle_" with whatever direction we're facing
-	pass
-
+	
 
 # TODO: Create health change function for interactions
 func change_health(amount):
