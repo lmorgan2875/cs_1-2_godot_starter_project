@@ -6,10 +6,16 @@ var xDirection = 0
 var facing = "down"
 var ySpeed = 300.0
 var yDirection = 0
+var coins = 0
+var health = 100
+var max_health = 100
+
+
 
 # TODO: Add health system variables
 # var health = ?
 # var maxHealth = ?
+
 
 # TODO: Add projectile scene for shooting
 # var projectile_scene = preload("res://scenes/projectile.tscn")
@@ -86,8 +92,14 @@ func change_health(amount):
 	# TODO: Make sure health stays between 0 and maxHealth
 	# TODO: Print the new health value
 	# TODO: Check if health <= 0 for death (optional challenge)
+	health += amount 
 	print("Health changed by: ", amount)
-
+	if health < 1:
+		Die()
+		print ("you died")
+		queue_free()
+	if health > max_health: 
+		health = max_health
 
 # TODO: Create shooting function
 func shoot():
@@ -111,3 +123,11 @@ func shoot():
 	# print("Shot projectile facing: ", facing)
 	
 	pass
+	
+func change_coins(amount:int):
+	coins += amount 
+	print ("you have_" + str(coins) + "coins")
+	
+func Die():
+	print ("you died")
+	queue_free()
