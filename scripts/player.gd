@@ -1,5 +1,9 @@
 extends CharacterBody2D
 @onready var _animation_player: AnimatedSprite2D = $AnimatedSprite2D
+const MyProjectile = preload("res://scenes/coin.tscn")
+
+
+
 
 var xSpeed = 300.0
 var xDirection = 0
@@ -9,8 +13,8 @@ var yDirection = 0
 var coins = 0
 var health = 100
 var max_health = 100
-
-
+var fireball_Speed = 300.0
+var fireball_Direction = 0
 
 # TODO: Add health system variables
 # var health = ?
@@ -19,6 +23,10 @@ var max_health = 100
 
 # TODO: Add projectile scene for shooting
 # var projectile_scene = preload("res://scenes/projectile.tscn")
+
+
+
+
 
 func _physics_process(_delta):
 	
@@ -74,7 +82,13 @@ func _physics_process(_delta):
 	# This is a special Godot function that makes the movement happen
 	update_animation()
 	move_and_slide()
-
+	
+func _input(_ev):
+	if Input.is_action_just_pressed("ui_select"):
+		shoot()
+		
+		
+	
 # TODO: Create animation function (add this outside of _physics_process)
 func update_animation():
 	# TODO: Set the animation based on the facing direction
@@ -101,15 +115,21 @@ func change_health(amount):
 	if health > max_health: 
 		health = max_health
 
+
 # TODO: Create shooting function
 func shoot():
 	# TODO: Create a new projectile instance
 	# Look at the documentation examples in the lesson
+	print ("shoot was pressed")
+	
+	var new_instance = MyProjectile.instantiate()
+	get_parent().add_child(new_instance)
+ 	#new_instance.velocity
 	
 	
 	# TODO: Set projectile position to player position
 	# Look at the "Setting Object Position" example
-	
+	 
 	
 	# TODO: Set projectile direction using facing variable
 	# Look at the "Calling Functions on Other Objects" example
@@ -124,6 +144,8 @@ func shoot():
 	
 	pass
 	
+	
+	
 func change_coins(amount:int):
 	coins += amount 
 	print ("you have_" + str(coins) + "coins")
@@ -131,3 +153,16 @@ func change_coins(amount:int):
 func Die():
 	print ("you died")
 	queue_free()
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

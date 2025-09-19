@@ -21,7 +21,7 @@ func _physics_process(_delta):
 	pass
 
 # TODO: Create function to set projectile direction
-func set_direction(facing_direction):
+func set_direction(_facing_direction):
 	# TODO: Convert facing string to Vector2 direction
 	# Use if statements: "up" -> Vector2.UP, "down" -> Vector2.DOWN, etc.
 	# Set direction = the Vector2 result
