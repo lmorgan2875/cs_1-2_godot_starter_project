@@ -124,7 +124,7 @@ func shoot():
 	
 	var new_instance = MyProjectile.instantiate()
 	get_parent().add_child(new_instance)
- 	#new_instance.velocity
+	#new_instance.velocity
 	
 	
 	# TODO: Set projectile position to player position
