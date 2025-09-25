@@ -1,7 +1,7 @@
 extends Area2D
 
 var direction : Vector2
-var Speed = 300
+var Speed = 400.0
 var facing = 0
 var fireball_Speed = 300.0
 var fireball_Direction = 0

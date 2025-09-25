@@ -123,14 +123,15 @@ func shoot():
 	#new_instance.velocity
 	
 	
-	print ("shoot was pressed")
+	print ("FIREBALL")
 	var new_instance = MyProjectile.instantiate()
 	new_instance.set_direction(facing)
 	get_parent().add_child(new_instance)
 	new_instance.global_position = position
 	
-	# TODO: Set pr ojectile direction using facing variable
+	# TODO: Set projectile direction using facing variable
 	# Look at the "Calling Functions on Other Objects" example
+	
 	
 	
 	# TODO: Add projectile to the game world
