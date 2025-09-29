@@ -3,8 +3,6 @@ extends CharacterBody2D
 const MyProjectile = preload("res://scenes/projectile.tscn")
 
 
-
-
 var xSpeed = 300.0
 var xDirection = 0
 var facing = "down"
