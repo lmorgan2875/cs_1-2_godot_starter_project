@@ -63,3 +63,24 @@ func shoot_at_player(_body):
 	
 	
 	pass
+# Declare boolean variable
+var player_in_range = false
+
+# Set to true when something happens
+func _on_area_entered(body):
+	if body.name == "Player":
+		player_in_range = true
+		print("Player_detected!")
+
+# Set to false when condition changes
+func _on_area_exited(body):
+	if body.name == "Player":
+		player_in_range = false
+		print("Player_lost!")
+
+# Use in decisions
+func try_to_shoot():
+	if player_in_range:
+		print("Shooting_at_player!")
+	else:
+		print("No_target_in_range")
