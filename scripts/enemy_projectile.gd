@@ -6,6 +6,7 @@ var _facing = 0
 var direction = _target
 
 func _process (_delta):
+	position = speed * direction * _delta
 	if _facing == "up":
 		direction = Vector2(0,-1)
 		
@@ -21,7 +22,7 @@ func _process (_delta):
 	
 	
 func set_direction(_target:Vector2):
-	_target = _target
+	direction = (_target - position)
 	
 	
 	

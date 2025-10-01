@@ -805,8 +805,8 @@ radius = 12.0
 script = ExtResource("1_hf8rj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(7.1525574e-07, -4.7683716e-07)
-scale = Vector2(0.49606252, 0.4765625)
+position = Vector2(-1.6940659e-21, -2.3841858e-07)
+scale = Vector2(0.6855313, 0.64453125)
 sprite_frames = SubResource("SpriteFrames_iboci")
 animation = &"idle_up"
 autoplay = "idle_down"
